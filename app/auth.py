@@ -19,6 +19,10 @@ def verify_password(plain: str, stored: str | None) -> bool:
 
 def admin_secret_ok(provided: str | None) -> bool:
     expected = os.environ.get("ADMIN_SECRET", "").strip()
+
+    print("DEBUG PROVIDED:", repr(provided))
+    print("DEBUG EXPECTED:", repr(expected))
+    
     if not expected:
         return False
     return (provided or "").strip() == expected
